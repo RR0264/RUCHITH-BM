@@ -2,7 +2,7 @@
 #include<stdio.h>
 int addition(int num1 , int num2)
 {
-    Int sum;
+    int sum;
     sum = num1 + num2;
     return sum;
 }
