@@ -21,7 +21,7 @@ int add_two_num(int first_num,int second_num)
 { 
 return (first_num+second_num);
 }
-int print(int sum)
+void print(int sum)
 {
  printf("sum of the 2 numbers is = %d\n",sum);
 }
