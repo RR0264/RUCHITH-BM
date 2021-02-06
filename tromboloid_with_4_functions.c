@@ -20,7 +20,7 @@ return 0;
 float  height()
 {
     float x;
-printf("Enter H of tromboloid:");
+printf("Enter the H of tromboloid:");
 scanf("%f",&x);
 return x;
 }
@@ -29,14 +29,14 @@ return x;
 float  breadth()
 {
     float y;
-printf("Enter B of tromboloid:");
+printf("Enter the B of tromboloid:");
 scanf("%f",&y);
 return y;
 }
 float  depth()
 {
     float z;
-printf("Enter D of tromboloid:");
+printf("Enter the D of tromboloid:");
 scanf("%f",&z);
 return z;
 }
@@ -45,4 +45,3 @@ float volume(float h,float b,float d)
 float a=((h*d)+d)/(3*b);
 return a;
 }
-
