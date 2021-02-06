@@ -1,46 +1,52 @@
 //WAP to find the distance between two points using structures and 4 functions.
-#include <stdio.h>
-int  take_the_array_size()
-{
-int temp;
-printf("Please enter how many numbers you want to provide:\n");
-scanf("%d",&temp);
-if(temp<0)
- {
- printf("Please enter a valid no:\n");
- return take_the_array_size();
- }
-return temp;
-}
-void array_elements(int* a,int n)
-{
-for(int i =0;i<n;i++)
- {
- printf("\nPlease enter the no:");
- scanf("%d",&a[i]);
- }
-};
-int calc_sum(int* a,int n)
-{
-int z=0;
-for (int i =0;i<n;i++)
- {
- z = z + a[i];
- }
-return z;
-};
-void show_output(int sum)
-{
-printf("\nThe sum of the numbers is: %d",sum);
-};
+#include<stdio.h>
+#include<math.h>
 int main()
 {
-int no,sum;
-no = take_the_array_size();
-int arr[no];
-array_elements(arr,no);
-sum = calc_sum(arr,no);
-show_output(sum);
+float x2,x1,y2,y1,d;
+float point1x();
+float point1y();
+float point2x();
+float point2y();
+
+x1=point1x();
+y1=point1y();
+
+x2=point2x();
+y2=point2y();
+d=sqrt(((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1)));
+printf("Distance between the points =%f",d);
 return 0;
 }
- 
+
+float point1x()
+{
+float a;
+printf("Enter the x coordinate of point one");
+scanf("%f",&a);
+return a;
+}
+float point1y()
+{
+float a;
+printf("Enter the y coordinate of point one");
+scanf("%f",&a);
+return a;
+}
+
+float point2x()
+{
+float a;
+printf("Enter the x coordinate of point two");
+scanf("%f",&a);
+return a;
+}
+float point2y()
+{
+float a;
+printf("Enter the y coordinate of point two");
+scanf("%f",&a);
+return a;
+}
+
+
