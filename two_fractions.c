@@ -39,10 +39,10 @@ Fractions calc_output(Fractions a, Fractions b){
 int main(){
 Fractions a,b,c;
 int gcd;
-printf("Enter the 1st fraction:\n");
+printf("Enter 1st fraction:\n");
 a = input(a);
 
-printf("Enter the 2nd fraction:\n");
+printf("Enter 2nd fraction:\n");
 b = input(b);
 
 c = calc_output(a,b);
