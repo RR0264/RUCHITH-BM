@@ -26,7 +26,7 @@
         return d;
      }
 
-     float displaydata(float vol){
+     int displaydata(float vol){
         printf("Volume of the tromboloid is :%2f",vol);
         return 0;
      }
@@ -38,4 +38,5 @@
           d=getdiameter();
          vol=volume(h,b,d);
          displaydata(vol);
+         return 0;
      }
