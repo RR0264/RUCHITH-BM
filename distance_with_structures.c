@@ -25,7 +25,7 @@ input (Coordinates a,int c)
 };
 
 void display(double d){
-  printf ("Distance between a and b: %lf\n", d);
+  printf ("Distance between point 1 and point 2: %lf\n", d);
 }
 
 int main ()
