@@ -8,13 +8,13 @@ typedef struct
 } Fraction;
 
 int
-simplified (int x, int y)
+gcd (int x, int y)
 {
   if (x == 0)
     {
       return y;
     }
-  return simplified (x % y, x);
+  return gcd (x % y, x);
 };
 
 Fraction
@@ -24,8 +24,9 @@ sum (Fraction f1, Fraction f2)
   int x, y;
   x = (f1.n * f2.d) + (f2.n * f1.d);
   y = (f1.d * f2.d);
-  c.n = x / simplified (x, y);
-  c.d = y / simplified (x, y);
+  int g = gcd(x,y);
+  c.n = x / g;
+  c.d = y / g;
   return c;
 }
 
@@ -36,7 +37,13 @@ input (int a)
 {
   Fraction c;
   printf ("Enter fraction %d: numerator and denominator:", a);
-  scanf ("%d%d", &c.n, &c.d);
+  scanf ("%d%d", &c.n, &c.d);  
+  if(c.d==0)
+  {     
+      printf("please enter valid denominator ");                                                
+      c=input (a); 
+      
+  }
   return c;
 };
 
