@@ -17,24 +17,29 @@ getDistance (struct coordinates a, struct coordinates b)
 }
 
 Coordinates
-input (Coordinates a,int c)
+input (int c)
 {
-  printf ("Enter coordinate of point %d: ",c);
+  Coordinates a;
+  printf ("Enter coordinate of point %d: ", c);
   scanf ("%d %d", &a.x, &a.y);
   return a;
 };
 
-void display(double d){
-  printf ("Distance between point 1 and point 2: %lf\n", d);
+void
+display (Coordinates a, Coordinates b, double d)
+{
+  printf ("Distance between point (%d,%d) and point (%d,%d): %lf\n", a.x, a.y,
+	  b.x, b.y, d);
 }
 
-int main ()
+int
+main ()
 {
   double d;
   struct coordinates a, b;
-  a = input (a,1);
-  b = input (b,2);
+  a = input (1);
+  b = input (2);
   d = getDistance (a, b);
-  display(d);
+  display (a, b, d);
   return 0;
 }
