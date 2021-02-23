@@ -32,25 +32,26 @@ sum (Fraction f1, Fraction f2)
 
 
 Fraction
-input (Fraction c, int a)
+input (int a)
 {
+  Fraction c;
   printf ("Enter fraction %d: numerator and denominator:", a);
   scanf ("%d%d", &c.n, &c.d);
   return c;
 };
 
 void
-display (Fraction r)
+display (Fraction f1, Fraction f2, Fraction r)
 {
-  printf ("Result=%d/%d", r.n, r.d);
+  printf ("Result of %d/%d + %d/%d = %d/%d", f1.n, f1.d, f2.n, f2.d,r.n, r.d);
 }
 
 int
 main ()
 {
-  Fraction f1 = input (f1, 1);
-  Fraction f2 = input (f2, 2);
+  Fraction f1 = input (1);
+  Fraction f2 = input (2);
   Fraction r = sum (f1, f2);
-  display (r);
+  display (f1, f2, r);
   return 0;
 }
