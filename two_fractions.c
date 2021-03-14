@@ -10,11 +10,19 @@ typedef struct
 int
 gcd (int x, int y)
 {
-  if (x == 0)
-    {
-      return y;
-    }
-  return gcd (x % y, x);
+ while (x != y) { 
+
+        if (x > y)         
+
+            x = x - y;         
+
+        else        
+
+            y = y - x;         
+
+    } 
+
+    return x;
 };
 
 Fraction
@@ -62,3 +70,7 @@ main ()
   display (f1, f2, r);
   return 0;
 }
+
+
+
+ 
