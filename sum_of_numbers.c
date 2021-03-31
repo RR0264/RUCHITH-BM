@@ -1,40 +1,48 @@
 //Write a program to find the sum of n different numbers using 4 functions
-#include <stdio.h>
-
-int  take_the_array_size(){
-int temp;
-printf("enter how many numbers you want to provide:\n");
-scanf("%d",&temp);
-if(temp<0){
-printf("enter a valid no:\n");
-return take_the_array_size();}
-
-return temp;}
-
-void array_elements(int* a,int n){
-for(int i =0;i<n;i++){
-printf("\n enter the no:");
-scanf("%d",&a[i]);
-}};
-
-int calc_sum(int* a,int n){
-int z=0;
-for (int i =0;i<n;i++){
-z = z + a[i];
+#include<stdio.h>
+int
+getelement ()
+{
+  int n;
+  scanf ("%d", &n);
+  return n;
 }
-return z;
-};
 
-void show_output(int sum){
-printf("\n sum of the numbers is: %d",sum);
-};
+void
+getN (int n, int a[n])
+{
+  for (int i = 0; i < n; i++)
+    {
+      a[i] = getelement ();
+    }
+}
 
-int main(){
-int no,sum;
-no = take_the_array_size();
-int arr[no];
-array_elements(arr,no);
-sum = calc_sum(arr,no);
-show_output(sum);
-return 0;}
+int
+addsum (int n, int a[n])
+{
+  int s=0;
+  for (int i = 0; i < n; i++)
+    {
+      s = s + a[i];
+    }
+  return s;
+}
 
+void
+display (int n, int s)
+{
+
+  printf ("sum of %d integers is %d", n, s);
+}
+
+void
+main ()
+{
+  int n, sum; printf("Enter the number: ");
+  n = getelement (); 
+  int s[n]; printf("Enter the numbers to be added: ");
+  getN (n, s);
+  sum = addsum (n, s);
+  display (n, sum);
+
+}
