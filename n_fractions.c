@@ -1,75 +1,82 @@
 //WAP to find the sum of n fractions.
-#include<stdio.h>
-
-typedef struct fractions{
-int num,den;
-}Fractions;
-
-int get_num(){
-int temp;
-printf("Enter The No Of Fractions You Want to Put: \n");
-scanf("%d",&temp);
-return temp;
+#include <stdio.h>
+struct fraction
+{
+  int n;
+  int d;
 };
+typedef struct fraction Fraction;
 
-void get_inputs(Fractions *a, int no){
-for(int i = 0;i<no;i++){
-printf("enter the numerator:\n");
-scanf("%d",&a[i].num);
-printf("enter the denominator:\n");
-scanf("%d",&a[i].den);
+Fraction getdata (int i)
+{
+  Fraction FractionInput;
+  printf ("Enter the Number %d numerator value: ", i);
+  scanf ("%d", &FractionInput.n);
+  printf ("Enter the Number %d denominator value: ", i);
+  scanf ("%d", &FractionInput.d);
+  return FractionInput;
 }
-};
 
-
-
-void show_output(Fractions temp,Fractions *a,int no){
-printf("sum of the fractions ");
-for(int i=0;i<no;i++){
-    if(i==no-1){
-        printf(" %d/%d = %d/%d",a[i].num,a[i].den,temp.num,temp.den);
+void getN (int n, Fraction s[n])
+{
+  for (int i = 0; i < n; i++)
+    {
+      s[i] = getdata (i+1);
     }
-    else{
-    printf("%d/%d +",a[i].num,a[i].den);}
 }
-};
 
-int gcd(int x,int y){
-    if(x==0){
-        return y;
+int gcd (int n, int d)
+{
+  if (d != 0)
+    return gcd (d, n % d);
+  else
+    return n;
+}
+
+Fraction computeOne (Fraction s1, Fraction s2)
+{
+  Fraction Computevalue;
+  int gcdvalue;
+  Computevalue.n = (s1.n * s2.d) + (s1.d * s2.n);
+  Computevalue.d = (s1.d * s2.d);
+  gcdvalue = gcd (Computevalue.n, Computevalue.d);
+  Computevalue.n = (Computevalue.n / gcdvalue);
+  Computevalue.d = (Computevalue.d / gcdvalue);
+  return Computevalue;
+}
+
+Fraction computeN (int n, Fraction s[n])
+{
+  Fraction result;
+  result.n = 0;
+  result.d = 1;
+  for (int i = 0; i < n ; i++)
+    {
+      result = computeOne (result, s[i]);
     }
-    
-    return gcd(y%x,x);
-};
-
-Fractions calculate(Fractions final,int no, Fractions *a){
-int x,y=0,test=1;
-for(int i =0;i<no;i++){
-test = test*a[i].den;}
-final.den =test;
-
-for(int i =0;i<no;i++){
-x=a[i].num;
-for(int j=0;j<no;j++){
-if(i!=j){
-x=x*a[j].den;
-}
-}
-y=y+x;
+  return result;
 }
 
+int GetnumberOfFraction ()
+{
+  int n;
+  printf ("Enter the number of fractions You wish to add: ");
+  scanf ("%d", &n);
+  return n;
+}
 
-final.num=y/ gcd(y,test);
-final.den=test/ gcd(y,test);
-return final; };
+void displayOutput (Fraction sum, int n)
+{
+  printf ("The sum of %d Fractions is  %d/%d ", n, sum.n, sum.d);
+}
 
-int main(){
-int no,x,y=0,test=1,gcd;
-Fractions final;
-no = get_num();
-Fractions  a[no];
-get_inputs(a,no);
-final = calculate(final,no,a);
-
-show_output(final,a,no);
-return 0;}
+int main ()
+{
+  Fraction SumOfFractions;
+  int n;
+  n = GetnumberOfFraction ();
+  Fraction s[n];
+  getN (n, s);
+  SumOfFractions = computeN (n, s);
+  displayOutput (SumOfFractions, n);
+}
